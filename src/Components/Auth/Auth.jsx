@@ -42,7 +42,7 @@ const Auth = () => {
             <form>
                 <h1>{title()}</h1>
                 {signUpFields()}
-                <label htmlfor="email">Email:</label>
+                <label htmlFor="email">Email:</label>
                 <br/>
                 <input type="text" id="email" placeholder="email@email.com" value={email} onChange={(event) => {
                 //@ two-way data binding. This builds a closed circuit to display and update an input field
@@ -51,7 +51,7 @@ const Auth = () => {
                     setEmail(event.target.value);
                 }} />
                 <br/>
-                <label htmlfor="password">Password:</label>
+                <label htmlFor="password">Password:</label>
                 <br/>
                 <input type="password" id="password" value={password} onChange={(event) => {
                     console.log(event);
