@@ -1,17 +1,20 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import Pie from './Pie/Pie'
 
-const Pies = () => {
+const Pies = (props) => {
     const [pies, setPies] = useState([]);
 
-        // const pumpkinPie = {
-        //     flavor: 'Pumpkin',
-        //     size: 10,
-        //     hotPie: false,
-        //     vegan: false,
-        //     baseOfPie: 'Pumpkin Puree',
-        //     crust: 'Pastry Dough'
-        // }
+    useEffect(() => {
+       fetch('http://localhost:4000/pies/getallpies', {
+           method: 'GET',
+           headers: {
+               'Content-Type': "application/json",
+               'Authorization': props.token
+           }
+       })
+       .then(res => res.json())
+       .then(data => setPies(data))
+    }, [])
 
         const testDataPies = [
             {
@@ -55,7 +58,7 @@ const Pies = () => {
                 </thead>
                 <tbody>
                     {/* <NameOfComponent newNameInNewComponent={nameOfVar/FunctionInThisComponent} /> */}
-                    <Pie pies={testDataPies} />
+                    <Pie pies={pies} />
                 </tbody>
             </table>
         </div>
